@@ -32,7 +32,6 @@ if($user!="yok"){
                     <div class="w3-container">
                         <label for="uname"><b>Kullanıcı Adı</b></label>
                         <input type="text" placeholder="Kullanıcı Adı" name="kullanici_adi" required class="w3-input w3-block">
-                        <!-- Anıl Şenocak -->
 
                         <label for="psw"><b>Şifre</b></label>
                         <input type="password" placeholder="Şifre" name="sifre" required class="w3-input w3-block">
@@ -47,8 +46,6 @@ if($user!="yok"){
                 if($giris!="yok"){
                     $kullanici_adi=$_POST["kullanici_adi"];
                     $sifre=$_POST["sifre"];
-                    //$kullanici_adi=mysql_real_escape_string(htmlspecialchars($_POST["kullanici_adi"]));
-                    //$sifre=mysql_real_escape_string(htmlspecialchars($_POST["sifre"])); 
                     if($kullanici_adi && $sifre){
                         $sorgu=mysql_query("select * from admin where kullanici_adi='".$kullanici_adi."' and sifre='".$sifre."'");
                         $toplam=mysql_num_rows($sorgu);

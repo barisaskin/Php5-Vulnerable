@@ -117,7 +117,8 @@ include("config.php");
 							} 
 							echo "</div>";
 						}else if($url[0]=="ara"){
-							$ara=htmlspecialchars($_POST["ara"]);
+							$ara=$_POST["ara"];
+							echo $ara;
 							$sorgu=mysql_query("select * from yazilar where baslik like '%$ara%' order by one_cikan desc");
 							$toplam = mysql_num_rows(mysql_query("select * from yazilar"));
 							while($yaz=mysql_fetch_object($sorgu)){
@@ -129,7 +130,6 @@ include("config.php");
 								}else{
 									$icerik.="";
 								}
-								
 								echo "<div class='w3-third w3-container w3-margin-bottom'>
 										<a href='".Site_url."/yazi/$yaz->url'><img src='".Site_url."/images/kategori/$yaz2->resim' alt='Norway' style='width:100%' class='w3-hover-opacity'></a>
 										<div class='w3-container w3-white'>
@@ -173,11 +173,10 @@ include("config.php");
 												</div>";
 
 										if(isset($_POST["email"])){
-											//$email=$_POST["email"]; // varsayılan değer
-											$email=htmlspecialchars($_POST["email"]); // xss ignore
-											//$yorum=$_POST["yorum"]; // varsayılan değer
-											$yorum=htmlspecialchars($_POST["yorum"]); // xss ignore
+											$email=$_POST["email"];
+											$yorum=$_POST["yorum"];
 											$sorgu=mysql_query("insert into yorumlar (email,yorum,yazi_id) values('$email','$yorum','$yaz->id')");
+											print("insert into yorumlar (email,yorum,yazi_id) values('$email','$yorum','$yaz->id')");
 											if($sorgu){
 												echo "<script>alert('Yorum Eklendi')</script>";
 											}else{

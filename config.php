@@ -1,4 +1,5 @@
 <?php
+header('X-XSS-Protection:0');
 $hostname = "localhost";
 $db_username = "root";
 $db_password = "usbw";
